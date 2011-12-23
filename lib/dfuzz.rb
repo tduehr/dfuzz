@@ -11,9 +11,22 @@
 # License:: Private
 # Revision:: $Id$
 #
-module DFuzz; end
-
-require 'dfuzz/generator'
+module DFuzz
+  if RUBY_VERSION < "1.9"
+    require 'dfuzz/generator'
+  else
+    class Generator < ::Enumerator
+      def next?
+        begin
+          peek
+          true
+        rescue StopIteration
+          false
+        end
+      end
+    end
+  end
+end
 
 module DFuzz
     # Generate Xi-F...Xi+F for each Xi in boundaries and fudge_factor F
@@ -158,15 +171,5 @@ module DFuzz
         def initialize()
         end
     end
-
-end
-
-####
-# Unit test
-####
-
-if $0 == __FILE__
-    puts "Testing Block"
-    puts "=> #{i} items"
 
 end
