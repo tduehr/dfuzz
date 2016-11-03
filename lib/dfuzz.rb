@@ -24,6 +24,7 @@ require 'dfuzz/char'
 require 'dfuzz/block'
 require 'dfuzz/sequential'
 require 'dfuzz/string'
+require 'dfuzz/Diagonal'
 
 module DFuzz
   #
