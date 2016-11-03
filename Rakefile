@@ -6,13 +6,13 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "dfuzz"
-  gem.homepage = "http://github.chi.matasano.com/td/dfuzz"
-  gem.license = "private"
+  gem.homepage = "http://github.com/tduehr/dfuzz"
   gem.summary = %Q{Fuzz generators}
   gem.description = %Q{Fuzzing payload generators for pentesting}
-  gem.email = "td@matasano.com"
+  gem.email = "timur.duehr@nccgroup.trust"
   gem.authors = ["tduehr", "Dino Dai Zovi"]
-  gem.add_development_dependency "jeweler", "~> 1.6.4"
+  gem.add_development_dependency "jeweler", "~> 2.1.2"
+  gem.add_development_dependency "yard", "~> 0.9.5"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
@@ -36,9 +36,5 @@ end
 
 task :default => :test
 
-begin
-  require 'yard'
-  YARD::Rake::YardocTask.new
-rescue LoadError
-  warn 'yard not found'
-end
+require 'yard'
+YARD::Rake::YardocTask.new
